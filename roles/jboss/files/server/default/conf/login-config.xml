@@ -204,6 +204,37 @@ $Revision: 43749 $
           </login-module>
       </authentication>
 	</application-policy>
-	
-</policy>
 
+  <application-policy name="mheSecurity">
+		<authentication>
+			<login-module  code="org.jboss.security.auth.spi.DatabaseServerLoginModule" flag="required">
+             <module-option name = "unauthenticatedIdentity">guest</module-option>
+             <module-option name = "dsJndiName">java:/MHEMSSQLDS</module-option>
+             <module-option name = "principalsQuery">SELECT USU_NOMBRE FROM USUARIO WHERE USU_NOMBRE=?</module-option>
+             <module-option name = "rolesQuery">SELECT USU_NOMBRE, 'Roles' FROM USUARIO WHERE USU_NOMBRE=?</module-option>
+			</login-module>
+		</authentication>
+	</application-policy>
+
+	<application-policy name="smsSecurity">
+    <authentication>
+			<login-module  code="org.jboss.security.auth.spi.DatabaseServerLoginModule" flag="required">
+             <module-option name = "unauthenticatedIdentity">guest</module-option>
+             <module-option name = "dsJndiName">java:/MHEMSSQLDS</module-option>
+             <module-option name = "principalsQuery">SELECT USU_NOMBRE FROM USUARIO WHERE USU_NOMBRE=?</module-option>
+             <module-option name = "rolesQuery">SELECT USU_NOMBRE, 'Roles' FROM USUARIO WHERE USU_NOMBRE=?</module-option>
+			</login-module>
+		</authentication>  
+	</application-policy>
+
+	<application-policy name="security">
+        <authentication>
+            <login-module code="org.jboss.security.auth.spi.UsersRolesLoginModule" flag = "required">
+			    <module-option name="usersProperties">props/securityModal-users.properties</module-option>
+			    <module-option name="rolesProperties">props/securityModal-roles.properties</module-option>
+		        <module-option name="hashAlgorithm">MD5</module-option>
+		        <module-option name="hashEncoding">HEX</module-option>
+            </login-module>
+        </authentication>
+	</application-policy>
+</policy>
