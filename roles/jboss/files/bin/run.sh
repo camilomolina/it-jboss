@@ -152,10 +152,10 @@ if $cygwin; then
     JBOSS_ENDORSED_DIRS=`cygpath --path --windows "$JBOSS_ENDORSED_DIRS"`
 fi
 
-set JBOSS_CLASSPATH="$JBOSS_CLASSPATH:/usr/local/bin/jboss-4.0.5.GA/server/default/etc/mhe"
-set JBOSS_CLASSPATH="$JBOSS_CLASSPATH:/usr/local/bin/jboss-4.0.5.GA/server/default/etc/sms-manager"
-set JBOSS_CLASSPATH="$JBOSS_CLASSPATH:/usr/local/bin/jboss-4.0.5.GA/server/default/etc/ship"
-set JBOSS_CLASSPATH="$JBOSS_CLASSPATH:/usr/local/bin/jboss-4.0.5.GA/server/default/etc/security"
+export JBOSS_CLASSPATH="$JBOSS_CLASSPATH:/usr/local/bin/jboss-4.0.5.GA/server/default/etc/mhe"
+export JBOSS_CLASSPATH="$JBOSS_CLASSPATH:/usr/local/bin/jboss-4.0.5.GA/server/default/etc/sms-manager"
+export JBOSS_CLASSPATH="$JBOSS_CLASSPATH:/usr/local/bin/jboss-4.0.5.GA/server/default/etc/ship"
+export JBOSS_CLASSPATH="$JBOSS_CLASSPATH:/usr/local/bin/jboss-4.0.5.GA/server/default/etc/security"
 
 
 # Display our environment
@@ -206,11 +206,10 @@ while true; do
    # If restart doesn't work, check you are running JBossAS 4.0.4+
    #    http://jira.jboss.com/jira/browse/JBAS-2483
    # or the following if you're running Red Hat 7.0
-   #    http://developer.java.sun.com/developer/bugParade/bugs/4465334.html   
+   #    http://developer.java.sun.com/developer/bugParade/bugs/4465334.html
    if [ $JBOSS_STATUS -eq 10 ]; then
       echo "Restarting JBoss..."
    else
       exit $JBOSS_STATUS
    fi
 done
-
