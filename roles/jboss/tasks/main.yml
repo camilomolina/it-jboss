@@ -1,0 +1,30 @@
+- name: copy run
+  copy: src={{item.src}} dest={{item.dest}} mode=0755 group=jboss owner=jboss
+  with_items:
+    - {src: files/bin/run.conf, dest: /usr/local/bin/jboss-4.0.5.GA/bin/run.conf}
+    - {src: files/bin/run.sh, dest: /usr/local/bin/jboss-4.0.5.GA/bin/run.sh}
+    - {src: files/bin/shutdown.sh, dest: /usr/local/bin/jboss-4.0.5.GA/bin/shutdown.sh}
+  notify:
+    - stop jboss
+    - pause jboss
+    - start jboss
+
+- name: copy conf
+  copy: src={{item.src}} dest={{item.dest}} mode=0644 group=jboss owner=jboss
+  with_items:
+    - {src: files/server/default/conf/, dest: /usr/local/bin/jboss-4.0.5.GA/server/default/conf/}
+    - {src: files/server/default/deploy/, dest: /usr/local/bin/jboss-4.0.5.GA/server/default/deploy/}
+    - {src: files/server/default/etc/, dest: /usr/local/bin/jboss-4.0.5.GA/server/default/etc/}
+  notify:
+    - stop jboss
+    - pause jboss
+    - start jboss
+
+- name: copy lib
+  copy: src={{item.src}} dest={{item.dest}} mode=0644 group=jboss owner=jboss
+  with_items:
+    - {src: files/server/default/lib/, dest: /usr/local/bin/jboss-4.0.5.GA/server/default/lib/}
+  notify:
+    - stop jboss
+    - pause jboss
+    - start jboss
