@@ -156,6 +156,7 @@ export JBOSS_CLASSPATH="$JBOSS_CLASSPATH:/usr/local/bin/jboss-4.0.5.GA/server/de
 export JBOSS_CLASSPATH="$JBOSS_CLASSPATH:/usr/local/bin/jboss-4.0.5.GA/server/default/etc/sms-manager"
 export JBOSS_CLASSPATH="$JBOSS_CLASSPATH:/usr/local/bin/jboss-4.0.5.GA/server/default/etc/ship"
 export JBOSS_CLASSPATH="$JBOSS_CLASSPATH:/usr/local/bin/jboss-4.0.5.GA/server/default/etc/security"
+export JBOSS_CLASSPATH="$JBOSS_CLASSPATH:/usr/local/bin/jboss-4.0.5.GA/server/default/etc/e-dividend"
 
 
 # Display our environment
